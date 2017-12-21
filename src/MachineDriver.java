@@ -11,10 +11,15 @@ import java.util.Scanner;
  *
  * This example describes the materials needed to build a cube by bolting
  * together six pieces of sheet metal.
+ * @author mendozaivpa
+ * @version 1.0
  */
 public class MachineDriver {
     /**
-     * The apps entry point.
+     * A simple example driver class for the Bill of Materials generator lab.
+     *
+     * This example describes the materials needed to build a cube by bolting
+     * together six pieces of sheet metal.
      *
      * @param args ignored
      */
