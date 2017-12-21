@@ -3,13 +3,13 @@
  * Winter 2017-2018
  * Lab 3 - Interfaces
  * Name: Pedro Mendoza IV
- * Created: 12/7/2016
+ * Created: 12/14/2016
  */
 import java.text.DecimalFormat;
 
 public class Bolt implements Part {
 
-    private DecimalFormat costFormat = new DecimalFormat("###.##");
+    private DecimalFormat costFormat = new DecimalFormat("##0.00");
     private DecimalFormat weightFormat = new DecimalFormat("###.###");
     public static final double USD_MULTIPLIER = 1.00;
     public static final double LBS_MULTIPLIER = 0.05;
@@ -34,7 +34,7 @@ public class Bolt implements Part {
      */
     @Override
     public double getCost() {
-        double totalCost = Double.parseDouble(costFormat.format(USD_MULTIPLIER * diameterInches * lengthInches));
+        double totalCost = USD_MULTIPLIER * diameterInches * lengthInches;
         return totalCost;
     }
 
@@ -44,7 +44,7 @@ public class Bolt implements Part {
      */
     @Override
     public double getWeight() {
-        double totalWeight = Double.parseDouble(weightFormat.format(LBS_MULTIPLIER * diameterInches * diameterInches * lengthInches));
+        double totalWeight = LBS_MULTIPLIER * (diameterInches * diameterInches) * lengthInches;
         return totalWeight;
     }
 
@@ -68,10 +68,12 @@ public class Bolt implements Part {
                 "==========================\n" +
                 "Length: " + lengthInches + " inches\n" +
                 "Diameter: " + diameterInches + " inches \n" +
-                "Cost: $" + getCost() + "\n" +
-                "Weight: " + getWeight() + " lbs\n"
+                "Cost: $" + costFormat.format(getCost()) + "\n" +
+                "Weight: " + weightFormat.format(getWeight()) + " lbs\n"
         );
 
     }
+
+
 
 }

@@ -3,13 +3,13 @@
  * Winter 2017-2018
  * Lab 3 - Interfaces
  * Name: Pedro Mendoza IV
- * Created: 12/7/2016
+ * Created: 12/14/2016
  */
 import java.text.DecimalFormat;
 
 public class SheetMetal implements Part {
 
-    private DecimalFormat costFormat = new DecimalFormat("###.##");
+    private DecimalFormat costFormat = new DecimalFormat("##0.00");
     private DecimalFormat weightFormat = new DecimalFormat("###.###");
     public static final double LBS_MULTIPLIER = 0.1;
     public static final double USD_MULTIPLIER = 0.50;
@@ -35,7 +35,7 @@ public class SheetMetal implements Part {
      */
     @Override
     public double getCost() {
-        double totalCost = Double.parseDouble(costFormat.format(USD_MULTIPLIER * thicknessInches * widthInches * lengthInches));
+        double totalCost = USD_MULTIPLIER * thicknessInches * widthInches * lengthInches;
         return totalCost;
     }
 
@@ -45,7 +45,7 @@ public class SheetMetal implements Part {
      */
     @Override
     public double getWeight() {
-        double totalWeight = Double.parseDouble(weightFormat.format(LBS_MULTIPLIER * thicknessInches * widthInches * lengthInches));
+        double totalWeight = LBS_MULTIPLIER * thicknessInches * widthInches * lengthInches;
         return totalWeight;
     }
 
@@ -70,8 +70,10 @@ public class SheetMetal implements Part {
                 "Length: " + lengthInches + " inches\n" +
                 "Width: " + widthInches + " inches \n" +
                 "Thickness: " + thicknessInches + "\n" +
-                "Cost: $" + getCost() + "\n" +
-                "Weight: " + getWeight() + " lbs\n"
+                "Cost: $" + costFormat.format(getCost()) + "\n" +
+                "Weight: " + weightFormat.format(getWeight()) + " lbs\n"
         );
     }
+
+
 }

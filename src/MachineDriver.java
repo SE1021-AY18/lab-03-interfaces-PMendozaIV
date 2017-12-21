@@ -16,7 +16,10 @@ import java.util.Scanner;
  */
 public class MachineDriver {
     /**
-     * The apps entry point.
+     * A simple example driver class for the Bill of Materials generator lab.
+     *
+     * This example describes the materials needed to build a cube by bolting
+     * together six pieces of sheet metal.
      *
      * @param args ignored
      */
@@ -71,6 +74,7 @@ public class MachineDriver {
      */
     private static void buildShovel() {
         System.out.println("Building a shovel");
+        System.out.println("TODO: Uncomment to enable example");
         SheetMetal handle = new SheetMetal(30,3,0.125);
         SheetMetal blade = new SheetMetal(10,8,0.25);
         Bolt bolt = new Bolt(0.125, 0.5);
@@ -91,6 +95,7 @@ public class MachineDriver {
      */
     private static void buildCube() {
         System.out.println("Building a cube");
+        System.out.println("TODO: Uncomment to enable example");
         Bolt bolt = new Bolt(0.25,2);
         Nut nut = new Nut(0.25);
         SheetMetal sheet = new SheetMetal(12,12,0.25);

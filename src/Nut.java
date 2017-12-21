@@ -3,13 +3,13 @@
  * Winter 2017-2018
  * Lab 3 - Interfaces
  * Name: Pedro Mendoza IV
- * Created: 12/7/2016
+ * Created: 12/14/2016
  */
 import java.text.DecimalFormat;
 
 public class Nut implements Part {
 
-    private DecimalFormat costFormat = new DecimalFormat("###.##");
+    private DecimalFormat costFormat = new DecimalFormat("##0.00");
     private DecimalFormat weightFormat = new DecimalFormat("###.###");
     public static final double USD_MULTIPLIER = 0.5;
     public static final double LBS_MULTIPLIER = 0.01;
@@ -29,7 +29,7 @@ public class Nut implements Part {
      */
     @Override
     public double getCost() {
-        double totalCost = Double.parseDouble(costFormat.format(USD_MULTIPLIER * diameterInches));
+        double totalCost = (USD_MULTIPLIER * diameterInches);
         return totalCost;
     }
 
@@ -39,7 +39,7 @@ public class Nut implements Part {
      */
     @Override
     public double getWeight() {
-        double totalWeight = Double.parseDouble(weightFormat.format(LBS_MULTIPLIER * diameterInches * diameterInches));
+        double totalWeight = LBS_MULTIPLIER * (diameterInches * diameterInches);
         return totalWeight;
     }
 
@@ -63,8 +63,10 @@ public class Nut implements Part {
                 getName() + "\n" +
                 "==========================\n" +
                 "Diameter : " + diameterInches + "\n" +
-                "Cost: $" + getCost() + "\n" +
-                "Weight: " + getWeight() + " lbs\n"
+                "Cost: $" + costFormat.format(getCost()) + "\n" +
+                "Weight: " + weightFormat.format(getWeight()) + " lbs\n"
         );
     }
+
+
 }

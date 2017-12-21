@@ -3,14 +3,14 @@
  * Winter 2017-2018
  * Lab 3 - Interfaces
  * Name: Pedro Mendoza IV
- * Created: 12/7/2016
+ * Created: 12/14/2016
  */
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Assembly implements Part{
 
-    private DecimalFormat costFormat = new DecimalFormat("###.##");
+    private DecimalFormat costFormat = new DecimalFormat("##0.00");
     private DecimalFormat weightFormat = new DecimalFormat("###.###");
     private ArrayList<Part> subParts = new ArrayList();
     public static final double USD_PER_SUB_PART = 0.25;
@@ -47,12 +47,11 @@ public class Assembly implements Part{
 
         for (int i = 0; i < subParts.size(); i++)
         {
-           partsCost += subParts.get(i).getCost();
-           partsCost = partsCost + USD_PER_SUB_PART;
+           partsCost += subParts.get(i).getCost() + USD_PER_SUB_PART;
+
         }
 
-        double totalCost = Double.parseDouble(costFormat.format(partsCost));
-        return totalCost;
+        return partsCost;
     }
 
     /**
@@ -69,8 +68,7 @@ public class Assembly implements Part{
 
         }
 
-        double totalWeight = Double.parseDouble(weightFormat.format(partsWeight));
-        return totalWeight;
+        return partsWeight;
     }
 
     /**
@@ -96,13 +94,13 @@ public class Assembly implements Part{
             System.out.println(
                     "Part: " + subParts.get(i).getName() + "\n" +
                     "Cost: $" + costFormat.format(subParts.get(i).getCost()) + "\n" +
-                     "Weight: " + weightFormat.format(subParts.get(i).getWeight()) + "\n"
+                     "Weight: " + weightFormat.format(subParts.get(i).getWeight()) + " lbs\n"
             );
         }
 
         System.out.println(
                 "Total Cost: $" + costFormat.format(getCost()) + "\n" +
-                "Total Weight: " + weightFormat.format(getWeight()) + "\n"
+                "Total Weight: " + weightFormat.format(getWeight()) + " lbs\n"
         );
 
         for(int i =0; i < subParts.size(); i++){
@@ -111,4 +109,9 @@ public class Assembly implements Part{
 
 
     }
+
+
+
+
+
 }
