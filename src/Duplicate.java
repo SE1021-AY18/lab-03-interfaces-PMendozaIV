@@ -1,9 +1,16 @@
+/*
+ * SE1021
+ * Winter 2017-2018
+ * Lab 3 - Interfaces
+ * Name: Pedro Mendoza IV
+ * Created: 12/7/2016
+ */
 import java.text.DecimalFormat;
 
 public class Duplicate implements Part{
 
-    private DecimalFormat costFormat = new DecimalFormat("$##.##");
-    private DecimalFormat weightFormat = new DecimalFormat("##.#");
+    private DecimalFormat costFormat = new DecimalFormat("##.##");
+    private DecimalFormat weightFormat = new DecimalFormat("##.###");
     public static final double REDUCTION_FACTOR1 = 0.95;
     public static final double REDUCTION_FACTOR2 = 0.9;
     public static final int USD_THRESHOLD1 = 5;
@@ -11,6 +18,11 @@ public class Duplicate implements Part{
     Part identicalPart;
     int numDuplicates;
 
+    /**
+     * Constructor of Duplicate Part
+     * @param identicalPart Part that is the same
+     * @param numDuplicates Number of the identical parts
+     */
     public Duplicate(Part identicalPart, int numDuplicates){
 
         this.identicalPart = identicalPart;
@@ -18,6 +30,10 @@ public class Duplicate implements Part{
 
     }
 
+    /**
+     * Gives the price of the part
+     * @return cost of part
+     */
     @Override
     public double getCost() {
 
@@ -40,12 +56,20 @@ public class Duplicate implements Part{
 
     }
 
+    /**
+     * Gives the weight of the object
+     * @return weight of the part
+     */
     @Override
     public double getWeight() {
         double weight = Double.parseDouble(weightFormat.format(numDuplicates * identicalPart.getWeight()));
         return weight;
     }
 
+    /**
+     * Gives the name of the part
+     * @return name of part
+     */
     @Override
     public String getName() {
 
@@ -53,17 +77,21 @@ public class Duplicate implements Part{
 
     }
 
+    /**
+     * Prints the entire bill of part(s)
+     */
     @Override
     public void printBillOfMaterials() {
         System.out.println(
 
-                "\n" + numDuplicates + " " + getName() + "\n\n" +
+                "==========================\n"  + getName() + "\n" +
+                "==========================\n" +
                 "Duplicate part: " + identicalPart.getName() + "\n" +
                 "Copies: " + numDuplicates + "\n" +
-                "Individual Cost: " + identicalPart.getCost() + "\n" +
-                "Individual Weight: " + identicalPart.getWeight() + "\n" +
-                "Total Cost: " + getCost() + "\n" +
-                "Total weight: " + getWeight() + "lbs\n"
+                "Individual Cost: $" + costFormat.format(identicalPart.getCost()) + "\n" +
+                "Individual Weight: " + weightFormat.format(identicalPart.getWeight()) + "\n\n" +
+                "Total Cost: $" + getCost() + "\n" +
+                "Total weight: " + getWeight() + " lbs\n"
 
         );
 
